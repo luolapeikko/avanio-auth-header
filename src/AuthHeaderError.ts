@@ -3,7 +3,7 @@
  * @since v0.0.1
  */
 export class AuthHeaderError extends Error {
-	constructor(message: string) {
+	public constructor(message: string) {
 		super(message);
 		this.name = 'AuthHeaderError';
 		Error.captureStackTrace(this, this.constructor);

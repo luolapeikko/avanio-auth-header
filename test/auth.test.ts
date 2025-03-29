@@ -1,6 +1,5 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-import {AuthHeaderError, authHeaderTypes, getAuthCredentials, getAuthString, getAuthType} from '../src';
 import {describe, expect, it} from 'vitest';
+import {AuthHeaderError, authHeaderTypes, getAuthCredentials, getAuthString, getAuthType} from '../src';
 
 const nullString = null as unknown as string;
 

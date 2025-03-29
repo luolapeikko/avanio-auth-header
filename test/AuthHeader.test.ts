@@ -1,6 +1,5 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-import {AuthHeader, authHeaderTypes} from '../src';
 import {describe, expect, it} from 'vitest';
+import {AuthHeader, authHeaderTypes} from '../src';
 
 const workingAuth = authHeaderTypes.map((type) => `${type.toLowerCase()} RANDOMVALUE`);
 

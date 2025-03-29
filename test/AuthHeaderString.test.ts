@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-confusing-void-expression */
-/* eslint-disable sonarjs/no-duplicate-string */
-import {assertAuthHeaderString, AuthHeaderError, haveAuthHeaderString, isAuthHeaderString} from '../src';
 import {describe, expect, it} from 'vitest';
+import {assertAuthHeaderString, AuthHeaderError, haveAuthHeaderString, isAuthHeaderString} from '../src';
 
 describe('AuthHeaderString', () => {
 	describe('isAuthHeaderString', () => {

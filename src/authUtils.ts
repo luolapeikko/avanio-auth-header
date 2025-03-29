@@ -1,3 +1,4 @@
+import {AuthHeaderError} from './AuthHeaderError';
 import {
 	assertAuthHeaderCredentials,
 	assertAuthHeaderType,
@@ -7,8 +8,15 @@ import {
 	type AuthHeaderType,
 	type StrictAuthHeaderType,
 } from './types';
-import {AuthHeaderError} from './AuthHeaderError';
 
+/**
+ * Builds and validates AuthHeaderObject from string
+ * @throws AuthHeaderError if input is invalid
+ * @param {unknown} authHeader - Auth header string
+ * @param {StrictAuthHeaderType<T> | undefined} expectType - expected auth header type
+ * @returns {AuthHeaderObject<T>} - builds AuthHeaderObject
+ * @template T - AuthHeaderType
+ */
 function buildAndValidateAuth<T extends AuthHeaderType = AuthHeaderType>(authHeader: unknown, expectType?: StrictAuthHeaderType<T>): AuthHeaderObject<T> {
 	if (typeof authHeader !== 'string') {
 		throw new AuthHeaderError(`${typeof authHeader} is invalid auth header type`);
@@ -27,6 +35,8 @@ function buildAndValidateAuth<T extends AuthHeaderType = AuthHeaderType>(authHea
 
 /**
  * normalized AuthString from string
+ * @param {string} authHeader - Auth header string
+ * @returns {AuthHeaderString} - normalized auth header string
  * @since v0.0.1
  */
 export function getAuthString(authHeader: string): AuthHeaderString {
@@ -36,6 +46,8 @@ export function getAuthString(authHeader: string): AuthHeaderString {
 
 /**
  * Return AuthType from Auth header string
+ * @param {string} authHeader - Auth header string
+ * @returns {AuthHeaderType} - auth header type
  * @since v0.0.1
  */
 export function getAuthType(authHeader: string): AuthHeaderType {
@@ -45,6 +57,8 @@ export function getAuthType(authHeader: string): AuthHeaderType {
 
 /**
  * Return credentials from Auth header string
+ * @param {string} authHeader - Auth header string
+ * @returns {AuthHeaderCredentials} - auth header credentials
  * @since v0.0.1
  */
 export function getAuthCredentials(authHeader: string): AuthHeaderCredentials {
@@ -55,7 +69,7 @@ export function getAuthCredentials(authHeader: string): AuthHeaderCredentials {
 /**
  * Get AuthHeaderObject from Auth header string
  * @param {string} authHeader - Auth header string
- * @returns {AuthHeaderObject}
+ * @returns {AuthHeaderObject} - auth header object
  * @throws {AuthHeaderError} - If auth header is invalid
  * @since v0.0.1
  */

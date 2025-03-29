@@ -8,6 +8,8 @@ export type AuthHeaderCredentials = string & {__authHeaderCredentials: true};
 
 /**
  * Check if data is valid AuthHeaderCredentials
+ * @param {unknown} data - Authorization header
+ * @returns {boolean} - true if data is AuthHeaderCredentials
  * @since v0.0.1
  */
 export function isAuthHeaderCredentials(data: unknown): data is AuthHeaderCredentials {
@@ -16,6 +18,8 @@ export function isAuthHeaderCredentials(data: unknown): data is AuthHeaderCreden
 
 /**
  * Assert value is valid AuthHeaderCredentials
+ * @param {unknown} value The value to be asserted as a valid AuthHeaderCredentials
+ * @throws {AuthHeaderError} If the value is not a valid AuthHeaderCredentials
  * @since v0.0.1
  */
 export function assertAuthHeaderCredentials(value: unknown): asserts value is AuthHeaderCredentials {

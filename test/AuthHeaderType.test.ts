@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable sonarjs/no-duplicate-string */
-import {assertAuthHeaderType, AuthHeaderError, AuthHeaderTypeEnum, haveAuthHeaderType, isAuthHeaderType} from '../src';
 import {describe, expect, it} from 'vitest';
+import {assertAuthHeaderType, AuthHeaderError, AuthHeaderTypeEnum, haveAuthHeaderType, isAuthHeaderType} from '../src';
 
 describe('AuthHeaderObject', () => {
 	describe('assertAuthHeaderType', () => {
@@ -41,19 +37,19 @@ describe('AuthHeaderObject', () => {
 	});
 	describe('assertAuthHeaderType', () => {
 		it('should check header', function () {
-			expect(isAuthHeaderType('BASIC')).to.be.true;
-			expect(isAuthHeaderType('BASIC', AuthHeaderTypeEnum.BASIC)).to.be.true;
-			expect(isAuthHeaderType('SOME_RANDOM')).to.be.false;
-			expect(isAuthHeaderType('BASIC', AuthHeaderTypeEnum.BEARER)).to.be.false;
+			expect(isAuthHeaderType('BASIC')).to.be.eq(true);
+			expect(isAuthHeaderType('BASIC', AuthHeaderTypeEnum.BASIC)).to.be.eq(true);
+			expect(isAuthHeaderType('SOME_RANDOM')).to.be.eq(false);
+			expect(isAuthHeaderType('BASIC', AuthHeaderTypeEnum.BEARER)).to.be.eq(false);
 		});
 	});
 	describe('assertAuthHeaderType', () => {
 		it('should validate header', function () {
-			expect(haveAuthHeaderType('BASIC')).to.be.true;
+			expect(haveAuthHeaderType('BASIC')).to.be.eq(true);
 		});
 		it('should throw error', function () {
-			expect(haveAuthHeaderType('asd')).to.be.false;
-			expect(haveAuthHeaderType(undefined)).to.be.false;
+			expect(haveAuthHeaderType('asd')).to.be.eq(false);
+			expect(haveAuthHeaderType(undefined)).to.be.eq(false);
 		});
 	});
 });

@@ -29,12 +29,17 @@ export const AuthHeaderTypeEnum = {
 
 /**
  * StrictAuthHeaderType type
+ * @template T - AuthHeaderType
  * @since v0.0.2
  */
 export type StrictAuthHeaderType<T extends AuthHeaderType = AuthHeaderType> = Set<T> | T[] | T;
 
 /**
  * AuthHeaderType type guard
+ * @param {unknown} authHeaderType - Authorization header type
+ * @param {StrictAuthHeaderType<T> | undefined} expectType - Expected Authorization header type
+ * @returns {boolean} - true if authHeaderType is AuthHeaderType
+ * @template T - AuthHeaderType
  * @since v0.0.1
  */
 export function isAuthHeaderType<T extends AuthHeaderType = AuthHeaderType>(
@@ -59,6 +64,8 @@ export function isAuthHeaderType<T extends AuthHeaderType = AuthHeaderType>(
 
 /**
  * Check if have auth header type (case insensitive)
+ * @param {unknown} authHeaderType - Authorization header type
+ * @returns {boolean} - true if authHeaderType is AuthHeaderType
  * @since v0.0.1
  */
 export function haveAuthHeaderType(authHeaderType: unknown): boolean {
@@ -71,6 +78,10 @@ export function haveAuthHeaderType(authHeaderType: unknown): boolean {
 
 /**
  * AuthHeaderType assertion
+ * @param {unknown} authHeaderType - Authorization header type
+ * @param {StrictAuthHeaderType<T> | undefined} expectType - Expected Authorization header type
+ * @throws {AuthHeaderError} - If authHeaderType is not AuthHeaderType
+ * @returns {boolean} true if authHeaderType is AuthHeaderType
  * @example
  * assertAuthHeaderType(headerType); // headerType: AuthHeaderType
  * assertAuthHeaderType(headerType, AuthHeaderTypeEnum.BASIC); // headerType: 'BASIC'
@@ -79,19 +90,22 @@ export function haveAuthHeaderType(authHeaderType: unknown): boolean {
  * @since v0.0.1
  */
 export function assertAuthHeaderType<T extends AuthHeaderType = AuthHeaderType>(
-	value: unknown,
+	authHeaderType: unknown,
 	expectType?: StrictAuthHeaderType<T>,
-): asserts value is AuthHeaderType;
-export function assertAuthHeaderType<T extends AuthHeaderType = AuthHeaderType>(value: unknown, expectType: StrictAuthHeaderType<T>): asserts value is T;
+): asserts authHeaderType is AuthHeaderType;
 export function assertAuthHeaderType<T extends AuthHeaderType = AuthHeaderType>(
-	value: unknown,
+	authHeaderType: unknown,
+	expectType: StrictAuthHeaderType<T>,
+): asserts authHeaderType is T;
+export function assertAuthHeaderType<T extends AuthHeaderType = AuthHeaderType>(
+	authHeaderType: unknown,
 	expectType?: StrictAuthHeaderType<T>,
-): asserts value is AuthHeaderType {
-	if (!isAuthHeaderType(value, expectType)) {
+): asserts authHeaderType is AuthHeaderType {
+	if (!isAuthHeaderType(authHeaderType, expectType)) {
 		if (expectType) {
 			const typeStrings = typeof expectType === 'string' ? [expectType] : Array.from(expectType);
-			throw new AuthHeaderError(`${JSON.stringify(value)} is not ["${typeStrings.join('", "')}"] auth header type`);
+			throw new AuthHeaderError(`${JSON.stringify(authHeaderType)} is not ["${typeStrings.join('", "')}"] auth header type`);
 		}
-		throw new AuthHeaderError(`${JSON.stringify(value)} is invalid auth header type`);
+		throw new AuthHeaderError(`${JSON.stringify(authHeaderType)} is invalid auth header type`);
 	}
 }

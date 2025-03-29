@@ -1,6 +1,6 @@
-import {type AuthHeaderType, haveAuthHeaderType, isAuthHeaderType} from './AuthHeaderType';
-import {type AuthHeaderCredentials} from './AuthHeaderCredentials';
 import {AuthHeaderError} from '../AuthHeaderError';
+import {type AuthHeaderCredentials} from './AuthHeaderCredentials';
+import {type AuthHeaderType, haveAuthHeaderType, isAuthHeaderType} from './AuthHeaderType';
 
 /**
  * Authorization header string
@@ -10,6 +10,8 @@ export type AuthHeaderString = `${AuthHeaderType} ${AuthHeaderCredentials}`;
 
 /**
  * Check if auth header is valid Auth Header string
+ * @param {unknown} auth - Authorization header
+ * @returns {boolean} if auth is AuthHeaderString
  * @since v0.0.1
  */
 export function isAuthHeaderString(auth: unknown): auth is AuthHeaderString {
@@ -18,6 +20,8 @@ export function isAuthHeaderString(auth: unknown): auth is AuthHeaderString {
 
 /**
  * Check if is auth header string (case insensitive)
+ * @param {unknown} auth - Authorization header
+ * @returns {boolean} if auth is AuthHeaderString
  * @since v0.0.1
  */
 export function haveAuthHeaderString(auth: unknown): boolean {
@@ -26,6 +30,8 @@ export function haveAuthHeaderString(auth: unknown): boolean {
 
 /**
  * Assert value is valid AuthHeaderString
+ * @param {unknown} value The value to be asserted as a valid AuthHeaderString
+ * @throws {AuthHeaderError} If the value is not a valid AuthHeaderString
  * @since v0.0.1
  */
 export function assertAuthHeaderString(value: unknown): asserts value is AuthHeaderString {
