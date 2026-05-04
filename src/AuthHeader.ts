@@ -1,5 +1,5 @@
 import {getAuthObject} from './authUtils';
-import {type AuthHeaderCredentials, type AuthHeaderObject, type AuthHeaderString, type AuthHeaderType} from './types';
+import type {AuthHeaderCredentials, AuthHeaderObject, AuthHeaderString, AuthHeaderType} from './types';
 
 /**
  * AuthHeader class

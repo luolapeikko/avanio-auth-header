@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import {assertAuthHeaderObject, AuthHeaderError} from '../src';
+import {AuthHeaderError, assertAuthHeaderObject} from '../src';
 
 describe('AuthHeaderObject', () => {
 	describe('assertAuthHeaderString', () => {

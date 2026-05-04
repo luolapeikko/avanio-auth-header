@@ -1,5 +1,5 @@
 import {AuthHeaderError} from '../AuthHeaderError';
-import {type AuthHeaderCredentials} from './AuthHeaderCredentials';
+import type {AuthHeaderCredentials} from './AuthHeaderCredentials';
 import {type AuthHeaderType, haveAuthHeaderType, isAuthHeaderType} from './AuthHeaderType';
 
 /**

@@ -1,11 +1,11 @@
 import {AuthHeaderError} from './AuthHeaderError';
 import {
-	assertAuthHeaderCredentials,
-	assertAuthHeaderType,
 	type AuthHeaderCredentials,
 	type AuthHeaderObject,
 	type AuthHeaderString,
 	type AuthHeaderType,
+	assertAuthHeaderCredentials,
+	assertAuthHeaderType,
 	type StrictAuthHeaderType,
 } from './types';
 
